@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     resumen_del_plato: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     nivel_de_comida_saludable: {
