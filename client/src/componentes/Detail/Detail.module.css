@@ -1,0 +1,45 @@
+.details {
+    text-align: center;
+    font-size: 16px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+.image {
+    padding-top: 2%;
+    width: auto;
+}
+
+.description {
+    margin-top: 1px;
+    line-height: 1.5;
+}
+
+.health {
+    color: green
+}
+
+.title {
+    color: #B66060;
+}
+
+.ingredients {
+    font-weight: bold;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    background-color: #eeeff4;
+    flex-direction: column;
+    padding: 2px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    border: #B66060;
+}

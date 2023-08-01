@@ -12,7 +12,7 @@ const Landing = () => {
                 <div className={style.options}>
                     <h1>FOODS</h1>
                     <br />
-                    <button onClick={home}>Come on!</button>
+                    <button className={style.button} onClick={home}>Come on!</button>
                 </div>
             </div>
         </div>

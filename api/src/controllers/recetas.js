@@ -82,7 +82,6 @@ const porNombre = async (name) => {
     return buscar
 }
 
-
 const buscarTodas = async () => {
     let buscar = [];
 
@@ -95,6 +94,8 @@ const buscarTodas = async () => {
     } else {
         // buscar la receta en la api
         const { data } = await axios(`${API_URL}/recipes/complexSearch?apiKey=${API_KEY}&number=100&offset=0&addRecipeInformation=true`)
+
+        // const { data } = await axios(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`)
 
         data.results.map((receta) => buscar.push(mapearRecetas(receta)))
     }

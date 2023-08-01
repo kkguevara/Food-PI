@@ -21,7 +21,7 @@ h1 {
     font-size: 70px;
 }
 
-button {
+.button {
     background-color: red;
     border: none;
     color: white;

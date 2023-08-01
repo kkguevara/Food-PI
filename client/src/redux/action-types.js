@@ -1,4 +1,7 @@
-export const GET_RECETAS = "GET_RECETAS"
-export const GET_NAME = "GET_NAME"
-export const GET_DIETAS = "GET_DIETAS"
-export const POST_DIETAS = "POST_DIETAS"
+export const GET_RECETAS = "GET_RECETAS";
+export const GET_RECETAS_ID = "GET_RECETAS_ID";
+export const GET_DIETAS = "GET_DIETAS";
+export const POST_RECETAS = "POST_RECETAS";
+export const ORDER_RECETAS = "ORDER_RECETAS";
+export const ORDER_NIVEL_COMIDA = "ORDER_NIVEL_COMIDA";
+export const FILTRAR_POR_DIETA = "FILTRAR_POR_DIETA";
