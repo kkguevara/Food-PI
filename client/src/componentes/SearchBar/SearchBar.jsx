@@ -3,7 +3,7 @@ import style from './SearchBar.module.css'
 import { useDispatch } from "react-redux";
 import { getRecetasNombre } from "../../redux/actions";
 
-export default function SearchBar({ onSearch }) {
+export default function SearchBar({ setCurrentPage }) {
 
     const [search, setSearch] = useState('')
 
@@ -17,6 +17,7 @@ export default function SearchBar({ onSearch }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setCurrentPage(1);
         dispatch(getRecetasNombre(search))
     };
 

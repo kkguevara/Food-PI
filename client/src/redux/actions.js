@@ -1,4 +1,4 @@
-import { GET_RECETAS, GET_DIETAS, POST_RECETAS, ORDER_RECETAS, ORDER_NIVEL_COMIDA, FILTRAR_POR_DIETA, GET_RECETAS_ID } from "./action-types";
+import { GET_RECETAS, GET_DIETAS, POST_RECETAS, ORDER_RECETAS, ORDER_NIVEL_COMIDA, FILTRAR_POR_DIETA, GET_RECETAS_ID, FILTRAR_POR_ORIGEN } from "./action-types";
 import axios from "axios";
 
 export const getRecetas = () => {
@@ -57,7 +57,9 @@ export const getDietas = () => {
 
 export const crearReceta = (receta) => {
     return async (dispatch) => {
+
         try {
+
             const { data } = await axios.post(`http://localhost:3001/recipes/`, receta);
 
             dispatch({
@@ -66,6 +68,7 @@ export const crearReceta = (receta) => {
             });
 
         } catch (error) {
+            console.log(error);
             console.log(error.message);
         }
     };
@@ -89,5 +92,12 @@ export const filtrarPorDieta = (dieta) => {
     return {
         type: FILTRAR_POR_DIETA,
         payload: dieta
+    }
+};
+
+export const filtrarPorOrigen = (origen) => {
+    return {
+        type: FILTRAR_POR_ORIGEN,
+        payload: origen
     }
 };

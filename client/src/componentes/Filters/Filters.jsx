@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import style from './Filters.module.css';
-import { filtrarPorDieta, getDietas, ordenarNivelComida, ordenarNombre } from '../../redux/actions';
+import { filtrarPorDieta, getDietas, getRecetas, ordenarNivelComida, ordenarNombre, filtrarPorOrigen } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Filters = () => {
@@ -16,7 +16,23 @@ const Filters = () => {
     };
 
     const handleFiltrarDieta = (event) => {
-        dispatch(filtrarPorDieta(event.target.value));
+        const payload = event.target.value
+        if (payload === 'All') {
+            dispatch(getRecetas())
+        } else {
+            dispatch(filtrarPorDieta(payload));
+        }
+
+    };
+
+    const handleFiltrarOrigen = (event) => {
+        const payload = event.target.value
+        if (payload === 'All') {
+            dispatch(getRecetas())
+        } else {
+            dispatch(filtrarPorOrigen(payload));
+        }
+
     };
 
     useEffect(() => {
@@ -28,19 +44,19 @@ const Filters = () => {
     return (
         <div>
             <select className={style.select} name="orderAZ" onChange={handleOrdenNombre}>
-                <option value='none'>Order by Name</option>
+                <option value=''>Order by Name</option>
                 <option value="A">A-Z</option>
                 <option value="Z">Z-A</option>
             </select>
 
             <select className={style.select} name="orderHS" onChange={handleOrdenNivel}>
-                <option value='none'>Order by Health-Score</option>
+                <option value=''>Order by Health-Score</option>
                 <option value="Max">Máximo</option>
                 <option value="Min">Mínimo</option>
             </select>
 
             <select className={style.select} name="filterD" onChange={handleFiltrarDieta}>
-                <option value='none'>Filter by Type of Diet</option>
+                <option value='All'>Filter by Type of Diet</option>
                 {dietas.map((dieta) => (
                     <option key={dieta.id} value={dieta.nombre}>
                         {dieta.nombre}
@@ -48,8 +64,8 @@ const Filters = () => {
                 ))}
             </select>
 
-            <select className={style.select} name="filterO">
-                <option value='none'>Filter by Origin</option>
+            <select className={style.select} name="filterO" onChange={handleFiltrarOrigen}>
+                <option value='All'>Filter by Origin</option>
                 <option value="db">Created recipes</option>
                 <option value="api">API recipes</option>
             </select>

@@ -1,4 +1,4 @@
-import { GET_RECETAS, GET_DIETAS, POST_RECETAS, ORDER_RECETAS, ORDER_NIVEL_COMIDA, FILTRAR_POR_DIETA, GET_RECETAS_ID } from "./action-types";
+import { GET_RECETAS, GET_DIETAS, POST_RECETAS, ORDER_RECETAS, ORDER_NIVEL_COMIDA, FILTRAR_POR_DIETA, GET_RECETAS_ID, FILTRAR_POR_ORIGEN } from "./action-types";
 
 const initialState = {
     recetas: [],
@@ -54,6 +54,13 @@ const reducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 recetas: recetasDietas
+            };
+
+        case FILTRAR_POR_ORIGEN:
+            const recetasOrigen = state.recetas.filter(receta => receta.origen === payload);
+            return {
+                ...state,
+                recetas: recetasOrigen
             };
 
         default:

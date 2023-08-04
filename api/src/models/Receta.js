@@ -26,7 +26,11 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     paso_a_paso: {
-      type: DataTypes.TEXT,
+      type: DataTypes.JSON,
+      allowNull: false,
+    },
+    uuid: {
+      type: DataTypes.STRING,
       allowNull: false,
     }
   },

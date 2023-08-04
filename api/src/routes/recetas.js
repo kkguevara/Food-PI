@@ -41,7 +41,7 @@ recipesRouter.get('/', async (req, res) => {
     } else {
         try {
             const recetasFiltradas = await porNombre(name)// conseguir x nombre
-            console.log(recetasFiltradas)
+
             if (recetasFiltradas.length > 0) {
                 res.status(200).json(recetasFiltradas)
             } else {
@@ -64,6 +64,9 @@ recipesRouter.post('/', async (req, res) => {
         res.status(500).json({ error: error.message })
     }
 })
+
+
+
 
 
 module.exports = recipesRouter;

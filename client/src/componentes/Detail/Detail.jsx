@@ -26,13 +26,21 @@ const Detail = () => {
                     <img className={style.image} alt='imagen' src={recipeDetail.imagen} />
                     <div className={style.details}>
                         <h1 className={style.title}>{recipeDetail.nombre}</h1>
-                        <p><h2>ID: {id}</h2></p>
-                        <p><h4>Diets: {recipeDetail.dietas.join(', ')}</h4></p>
-                        <p><h4>Health-Score: <span className={style.health}>{recipeDetail.nivel_comida}</span></h4></p>
-                        <p><div dangerouslySetInnerHTML={{ __html: recipeDetail.resumen }} /></p>
-                        <p><h4 className={style.steps}>Instructions:</h4></p>
-                        <p>
-                            <div>
+                        <h2>ID: {id}</h2>
+                        <h4>Diets: {recipeDetail.dietas.join(', ')}</h4>
+                        <h4>Health-Score: <span className={style.health}>{recipeDetail.nivel_comida}</span></h4>
+                        <div dangerouslySetInnerHTML={{ __html: recipeDetail.resumen }} />
+                        <h4 className={style.steps}>Instructions:</h4>
+
+                        {
+                            recipeDetail.origen === 'db' ? (
+                                <ul>{recipeDetail.pasos.map(
+                                    (paso) => {
+                                        return <li>{paso}</li>
+                                    }
+                                )}
+                                </ul>
+                            ) : (
                                 <ul>{recipeDetail.pasos.map(
                                     (paso) => {
                                         return <li key={paso.number}>
@@ -40,9 +48,11 @@ const Detail = () => {
                                             <p>{paso.step}</p>
                                         </li>
                                     }
-                                )}</ul>
-                            </div>
-                        </p>
+                                )}
+                                </ul>
+                            )
+                        }
+
 
                     </div>
                 </div>

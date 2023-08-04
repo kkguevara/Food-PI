@@ -44,6 +44,10 @@ img {
     line-height: 24px;
 }
 
+.notfound {
+    padding: 50px;
+}
+
 /* Responsivo - varias pantallas */
 @media screen and (max-width: 1024px) {
     .row .column {

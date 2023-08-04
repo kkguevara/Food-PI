@@ -1,43 +1,50 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 import style from './Pagination.module.css'
-import { Link } from "react-router-dom";
 
-const Pagination = ({ paginaActual, totalPag, handlePagAnterior, handleCambiarPag, handleSiguientePag }) => {
-    const [inputPage, setInputPage] = useState(paginaActual);
+const Pagination = ({ currentPage, totalPages, handlePrevPage, handlePageChange, handleNextPage }) => {
+    const [inputPage, setInputPage] = useState(currentPage);
 
     useEffect(() => {
-        setInputPage(paginaActual);
-    }, [paginaActual]);
+        setInputPage(currentPage);
+    }, [currentPage]);
 
     const handleInputChange = (event) => {
         setInputPage(event.target.value);
     };
 
     const handleInputKeyDown = (event) => {
-        const newPage = parseInt(inputPage);
-        if (newPage >= 1 && newPage <= totalPag) {
-            handleCambiarPag(newPage);
-        } else {
-            setInputPage(paginaActual);
+        if (event.key === "Enter") {
+            const newPage = parseInt(inputPage);
+            if (newPage >= 1 && newPage <= totalPages) {
+                handlePageChange(newPage);
+            } else {
+                setInputPage(currentPage);
+            }
         }
     };
 
-    const paginaInicio = 1;
-
     return (
-        <div className={style.center}>
-            <div className={style.pagination}>
-                <Link onClick={handlePagAnterior}>&laquo;</Link>
-                {Array.from({ length: totalPag - 1 }).map((_, i) => {
-                    const nroPag = paginaInicio + i;
-                    const buttonClass = nroPag === paginaActual ? style.active : "";
-                    return <Link className={buttonClass} onClick={handleInputKeyDown()}>{nroPag}</Link>
-                })}
-                <Link onClick={handleSiguientePag}>&raquo;</Link>
-            </div>
+        <div className={style.pagination}>
+            <button className={style.buttonRight} onClick={handlePrevPage} disabled={currentPage === 1}>
+                &laquo;
+            </button>
+            <input
+                type="number"
+                value={inputPage}
+                min={1}
+                max={totalPages}
+                onChange={handleInputChange}
+                onKeyDown={handleInputKeyDown}
+                className={style.input}
+                readOnly
+            />
+            of {totalPages} pages
+            <button className={style.buttonLeft} onClick={handleNextPage} disabled={currentPage === totalPages}>
+                &raquo;
+            </button>
         </div>
-
-    )
-}
+    );
+};
 
 export default Pagination;
+

@@ -7,7 +7,8 @@ const { API_KEY, API_URL } = process.env
 
 const obtenerDietas = async () => {
 
-    const { data } = await axios(`${API_URL}/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`);
+    //const { data } = await axios(`${API_URL}/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`);
+    const { data } = await axios(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`)
 
     let dietas = [];
 
